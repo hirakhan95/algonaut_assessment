@@ -9,7 +9,8 @@ User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'author_pseudonym')
+        fields = ['author_pseudonym', 'email', 'bio', 'profile_url']
+        extra_kwargs = {'email': {'read_only': True}}
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -39,3 +40,6 @@ class UserLoginSerializer(serializers.Serializer):
                 'email': user.email
             }
         raise serializers.ValidationError('Invalid Credentials')
+
+
+
