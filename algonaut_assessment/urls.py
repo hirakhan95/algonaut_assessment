@@ -19,7 +19,9 @@ from django.contrib import admin
 from book_api.views import (
     UserRegistrationView,
     UserLoginView,
-    UserDetail
+    UserDetail,
+    BookListCreateView,
+    BookDetailView
 )
 
 from django.urls import path
@@ -37,4 +39,6 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token-refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token-verify'),
     path('api/user/', UserDetail.as_view(), name='user-update'),
+    path('api/books/', BookListCreateView.as_view(), name='book-list-create'),
+    path('api/books/<int:pk>/', BookDetailView.as_view(), name='book-detail'),
 ]

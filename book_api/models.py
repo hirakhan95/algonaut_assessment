@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
 class UserManager(BaseUserManager):
@@ -46,3 +47,14 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    isbn = models.CharField(max_length=13, unique=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return self.title

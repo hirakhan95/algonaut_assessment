@@ -1,3 +1,4 @@
+from rest_framework import generics, permissions
 from rest_framework import status
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import AllowAny
@@ -6,8 +7,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .models import User
-from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer
+from .models import User, Book
+from .serializers import (
+    UserRegistrationSerializer,
+    UserLoginSerializer,
+    UserSerializer,
+    BookSerializer
+)
 
 
 class UserRegistrationView(APIView):
@@ -39,3 +45,28 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
             return obj
         else:
             raise PermissionError("You do not have permission to access this profile.")
+
+
+class BookListCreateView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Book.objects.all()
+        title = self.request.query_params.get('title')
+        isbn = self.request.query_params.get('isbn')
+        if title:
+            queryset = queryset.filter(title__icontains=title)
+        if isbn:
+            queryset = queryset.filter(isbn=isbn)
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]

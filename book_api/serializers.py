@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import RefreshToken
+from .models import Book
 
 User = get_user_model()
 
@@ -42,4 +43,8 @@ class UserLoginSerializer(serializers.Serializer):
         raise serializers.ValidationError('Invalid Credentials')
 
 
-
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = ['id', 'title', 'description', 'author', 'isbn', 'price']
+        read_only_fields = ['author']
