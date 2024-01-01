@@ -1,0 +1,51 @@
+{
+	"id": "a34201d8-4eba-477e-8619-06a0846bbe94",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "127.0.0.1:8000",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "refresh",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwNDIyOTc0NywiaWF0IjoxNzA0MTQzMzQ3LCJqdGkiOiIyOTFlZDQ4MTg5NDQ0OGIzYjMwMGYwZDBmZDEyNjliMSIsInVzZXJfaWQiOjF9.BoD13sLBpWwyIJRqHEFvGnDBL5a72MJYrCZDSzMMuw8",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "access",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0MTQ0MDY5LCJpYXQiOjE3MDQxNDM3NjksImp0aSI6IjZiYWQ4MDQxZDY2ZDQwNDJhOGJlYmYzODdiYTQ4YzBkIiwidXNlcl9pZCI6MX0.II0E-ZsvPMi0SEjgx53XDOPAY9g8Cggf0zdoSxBzjos",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email",
+			"value": "abc@abc.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "123asdqwe",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "author_pseudonym",
+			"value": "abc",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "book_id",
+			"value": "1",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-01-01T22:37:57.741Z",
+	"_postman_exported_using": "Postman/10.21.9"
+}
